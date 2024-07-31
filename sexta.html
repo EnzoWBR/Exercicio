@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Registro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #4a4ab6;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            color: #000000;
+        }
+        .form-container {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            width: 300px;
+            border: 2px solid #FF0000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .form-container::before,
+        .form-container::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to left, #3c3cce, #FF0000);
+            border-radius: 10px;
+        }
+        .form-container::before {
+            top: -10px;
+            border-radius: 10px 10px 0 0;
+        }
+        .form-container::after {
+            bottom: -10px;
+            border-radius: 0 0 10px 10px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #0000FF;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #0000FF;
+        }
+        .form-group input {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #0000FF;
+            background-color: #F0F0F0;
+            color: #000000;
+            font-size: 14px;
+            margin: 0 auto;
+        }
+        .form-group input::placeholder {
+            color: #aa9418;
+        }
+        .btn {
+            width: auto;
+            padding: 8px 16px;
+            background-color: #4a4ab6;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #4a4ab6;
+        }
+        .btn .arrow {
+            margin-left: 5px;
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registro do aluno:</h2>
+        <form action="submit.php" method="POST">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" placeholder="Digite aqui o seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="state">Estado:</label>
+                <input type="text" id="state" name="state" placeholder="Informe o Estado" required>
+            </div>
+            <div class="form-group">
+                <label for="school">Escola:</label>
+                <input type="text" id="school" name="school" placeholder="Escola onde você estuda" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" name="city" placeholder="Informe a cidade" required>
+            </div>
+            <div class="form-group">
+                <label for="ra">RA:</label>
+                <input type="number" id="ra" name="ra" placeholder="Informe seu RA" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="rosinosberto@gmail.com" required>
+            </div>
+            <button class="btn" type="submit">Subir dados <span class="arrow">→</span></button>
+        </form>
+    </div>
+</body>
+</html>
