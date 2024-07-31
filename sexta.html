@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Registro do aluno</title>
     <style>
@@ -149,8 +149,22 @@
     </div>
     <script>
         document.getElementById('ra').addEventListener('input', function (e) {
-            // Remove todos os caracteres não numéricos
+            /* Remove todos os caracteres não numéricos */
             e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('name').addEventListener('input', function (e) {
+            /* Remove todos os números */
+            e.target.value = e.target.value.replace(/[0-9]/g, '');
+        });
+        document.getElementById('state').addEventListener('input', function (e) {
+            /* Remove todos os números */
+            e.target.value = e.target.value.replace(/[0-9]/g, '');
+        });
+
+        document.getElementById('city').addEventListener('input', function (e) {
+            /* Remove todos os números */
+            e.target.value = e.target.value.replace(/[0-9]/g, '');
         });
 
         document.getElementById('registration-form').addEventListener('submit', async function (event) {
@@ -170,7 +184,7 @@
                 if (response.ok) {
                     const result = await response.json();
                     alert('Dados enviados com sucesso! ' + JSON.stringify(result));
-                    this.reset();/*Limpa os dados para digitar um usuario novo       */
+                    this.reset(); /*Limpa os dados para digitar um usuario novo   */
                 } else {
                     alert('Ocorreu um erro ao enviar os dados.');
                 }
