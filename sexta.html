@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Registro</title>
+    <title>Tela de Registro do aluno</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #4a4ab6;
-            font-family: 'Montserrat', sans-serif;
+            background-color: #2b2bc0;
+            font-family: 'Geneva', sans-serif;
             margin: 0;
             color: #000000;
-            padding: 10px; 
+            padding: 10px;
         }
+
         .form-container {
             background-color: #FFFFFF;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.712);
             width: 100%;
-            max-width: 400px; 
+            max-width: 400px;
             border: 2px solid #FF0000;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
         }
+
         .form-container::before,
         .form-container::after {
             content: '';
@@ -40,30 +44,36 @@
             background: linear-gradient(to left, #3c3cce, #FF0000);
             border-radius: 10px;
         }
+
         .form-container::before {
             top: -10px;
             border-radius: 10px 10px 0 0;
         }
+
         .form-container::after {
             bottom: -10px;
             border-radius: 0 0 10px 10px;
         }
+
         .form-container h2 {
             text-align: center;
             margin-bottom: 10px;
             font-size: 20px;
             color: #0000FF;
         }
+
         .form-group {
             margin-bottom: 15px;
             width: 100%;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-size: 14px;
             color: #0000FF;
         }
+
         .form-group input {
             width: 100%;
             padding: 10px;
@@ -74,9 +84,11 @@
             font-size: 14px;
             margin: 0 auto;
         }
+
         .form-group input::placeholder {
-            color: #aa9418;
+            color: #7c6d14;
         }
+
         .btn {
             width: auto;
             padding: 8px 16px;
@@ -89,16 +101,21 @@
             display: flex;
             align-items: center;
             font-size: 14px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
+
         .btn:hover {
-            background-color: #4a4ab6;
+            background-color: #3333FF;
+            transform: scale(1.05);
         }
+
         .btn .arrow {
             margin-left: 5px;
             transform: rotate(-90deg);
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <h2>Registro do aluno:</h2>
@@ -121,7 +138,7 @@
             </div>
             <div class="form-group">
                 <label for="ra">RA:</label>
-                <input type="number" id="ra" name="ra" placeholder="Informe seu RA" required>
+                <input type="text" id="ra" name="ra" placeholder="Informe seu RA" required>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -131,11 +148,16 @@
         </form>
     </div>
     <script>
-        document.getElementById('registration-form').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
+        document.getElementById('ra').addEventListener('input', function (e) {
+            // Remove todos os caracteres não numéricos
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('registration-form').addEventListener('submit', async function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário 
 
             const formData = new FormData(this); // Cria um objeto FormData a partir do formulário
-            
+
             try {
                 const response = await fetch('https://webhooks.workflows.wsmart.tec.br/webhook/eef8e3e1-4808-407b-b983-658dfa8ab786', {
                     method: 'POST',
@@ -148,7 +170,7 @@
                 if (response.ok) {
                     const result = await response.json();
                     alert('Dados enviados com sucesso! ' + JSON.stringify(result));
-                    this.reset(); 
+                    this.reset();/*Limpa os dados para digitar um usuario novo       */
                 } else {
                     alert('Ocorreu um erro ao enviar os dados.');
                 }
@@ -159,4 +181,5 @@
         });
     </script>
 </body>
+
 </html>
