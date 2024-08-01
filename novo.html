@@ -8,13 +8,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-        body {
-            font-family: Poppins, sans-serif;
+        html, body {
             margin: 0;
             padding: 0;
-            background-color: #817f7f;
-            /* Cinza claro */     
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: Poppins, sans-serif;
+            background-color: #fffefe;
+            /* Cinza claro */
             color: #333;
+            overflow-x: hidden;
         }
 
         header {
@@ -23,6 +29,7 @@
             color: white;
             padding: 15px 0;
             text-align: center;
+            width: 100%;
         }
 
         header h1 {
@@ -30,12 +37,9 @@
         }
 
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
+            width: 100%;
             background: #ffffff;
             /* Branco */
-            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -47,9 +51,7 @@
             background-color: #06b0ff;
             /* Ciano */
             color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            padding: 20px;
         }
 
         .form-row {
@@ -106,6 +108,7 @@
             color: white;
             padding: 15px 0;
             text-align: center;
+            width: 100%;
         }
 
         footer p {
@@ -128,6 +131,13 @@
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: scale(1.05);
+            background-color: #f0f8ff;
+            /* Tom de azul claro */
         }
 
         .info-item h2 {
@@ -171,18 +181,22 @@
             <div class="section-header">
                 <h2>Formulário de Cadastro</h2>
             </div>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data" id="cadastro-form">
                 <div class="form-row"> 
                     <div class="form-group">
                         <label for="nome">Nome Completo:</label>
                         <input type="text" id="nome" name="nome" placeholder="Ex: Neymar" required>
                     </div>
                     <div class="form-group">
-                        <label for="idade">Idade:</label>
-                        <input type="number" id="idade" name="idade" placeholder="Ex: 25" min="16" required>
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="Ex: (xx) xxxx-xxxx" required>
                     </div>
                 </div>
                 <div class="form-row">
+                    <div class="form-group">
+                        <label for="data-nascimento">Data de Nascimento:</label>
+                        <input type="date" id="data-nascimento" name="data-nascimento" required>
+                    </div>
                     <div class="form-group">
                         <label for="posicao">Posição:</label>
                         <select id="posicao" name="posicao" required>
@@ -210,10 +224,6 @@
                             <option value="la-liga">La Liga</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="foto">Foto do Jogador:</label>
-                        <input type="file" id="foto" name="foto" accept="image/*">
-                    </div>
                 </div>
                 <div class="form-group">
                     <button type="submit">Cadastrar</button>
@@ -225,6 +235,44 @@
     <footer>
         <p>&copy; 2024 Cadastro de Jogador de Futebol. Enzo Livrari Vieira</p>
     </footer>
+    <script>
+        
+        document.getElementById('nome').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\d/g, '');
+        });
+
+    
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^\d\(\)\-\s]/g, '');
+        });
+
+        document.getElementById('cadastro-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('https://webhooks.workflows.wsmart.tec.br/webhook/eef8e3e1-4808-407b-b983-658dfa8ab786', {
+                    method: 'POST',
+                    body: JSON.stringify(Object.fromEntries(formData)),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    alert('Dados enviados com sucesso! ' + JSON.stringify(result));
+                    this.reset();
+                } else {
+                    alert('Ocorreu um erro ao enviar os dados.');
+                }
+            } catch (error) {
+                console.error('Erro ao enviar dados:', error);
+                alert('Erro ao enviar dados.');
+            }
+        });
+    </script>
 </body>
 
 </html>
