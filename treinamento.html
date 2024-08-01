@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Jogador de Futebol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #817f7f;
+            /* Cinza claro */     
+            color: #333;
+        }
+
+        header {
+            background-color: #000000;
+            /* Preto */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            /* Branco */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            background-color: #06b0ff;
+            /* Ciano */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
+
+        .form-group button {
+            background-color: #06b0ff;
+            /* Ciano */
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .form-group button:hover {
+            background-color: #0392d0;
+            /* Tom mais escuro de ciano */
+        }
+
+        footer {
+            background-color: #000000;
+            /* Preto */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .info-block {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Espaçamento entre as colunas */
+        }
+
+        .info-item {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff;
+            /* Branco */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item h2 {
+            margin-top: 0;
+            color: #333;
+            /* Cinza escuro */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cadastro de Jogador de Futebol</h1>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="section-header">
+                <h2>Sobre o Cadastro</h2>
+            </div>
+            <div class="info-block">
+                <div class="info-item">
+                    <h2>Objetivo</h2>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                        classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                </div>
+                <div class="info-item">
+                    <h2>Importância</h2>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                        classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                </div>
+                <div class="info-item">
+                    <h2>Requisitos</h2>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                        classical Latin literature from 45 BC, making it over 2000 anos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Formulário de Cadastro</h2>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-row"> 
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: Neymar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idade">Idade:</label>
+                        <input type="number" id="idade" name="idade" placeholder="Ex: 25" min="16" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="posicao">Posição:</label>
+                        <select id="posicao" name="posicao" required>
+                            <option value="" disabled selected>Selecione a posição do Atleta</option>
+                            <option value="goleiro">Goleiro</option>
+                            <option value="zagueiro">Zagueiro</option>
+                            <option value="lateral">Lateral</option>
+                            <option value="meio-campo">Meio-campo</option>
+                            <option value="atacante">Atacante</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="equipe">Equipe:</label>
+                        <input type="text" id="equipe" name="equipe" placeholder="Ex: Palmeiras" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="liga">Liga do Atleta:</label>
+                        <select id="liga" name="liga" required>
+                            <option value="" disabled selected>Selecione a liga</option>
+                            <option value="brasileirao">Brasileirão</option>
+                            <option value="serie-b">Série B</option>
+                            <option value="premier-league">Premier League</option>
+                            <option value="la-liga">La Liga</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Foto do Jogador:</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cadastro de Jogador de Futebol. Enzo Livrari Vieira</p>
+    </footer>
+</body>
+
+</html>
