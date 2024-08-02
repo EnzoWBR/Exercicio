@@ -82,10 +82,16 @@
             box-sizing: border-box;
             border: 1px solid #c6c6c6;
             border-radius: 4px;
+            transition: transform 0.3s ease;
         }
 
         .form-group input[type="file"] {
             padding: 5px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            transform: scale(1.05);
         }
 
         .form-group button {
@@ -299,11 +305,9 @@
             this.value = this.value.replace(/\d/g, '');
         });
 
-
         document.getElementById('telefone').addEventListener('input', function (e) {
             this.value = this.value.replace(/[^\d\(\)\-\s]/g, '');
         });
-
 
         document.getElementById('cadastro-form').addEventListener('submit', async function (event) {
             event.preventDefault();
